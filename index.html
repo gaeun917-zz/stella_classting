@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>광고 성과 보고서</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.6.3/papaparse.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/metrics-graphics/2.15.6/metricsgraphics.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="script.js"></script>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/metrics-graphics/2.15.6/metricsgraphics.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+    <link rel="stylesheet" href="./normalizer.css">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+<div class="wrapper">
+    <section class="header">
+        <h1>광고 성과보고서</h1>
+        <div class="uploadMsg">csv 파일을 업로드 해주세요</div>
+        <input type="file" class="custom-file-input" id="input" onchange="handleFiles(this.files)" multiple>
+    </section>
+
+    <section class="result">
+        <section class='filterPanel' id="filter">
+            <div class="filterWrapper">
+                <div>starting date</div>
+                <select class='filter' id="date-startFilter" onChange="setupDateFilter()"></select>
+            </div>
+            <div class="filterWrapper">
+                <div>ending date</div>
+                <select class='filter' id="date-endFilter"></select>
+            </div>
+            <div class="filterWrapper">
+                <div>user type</div>
+                <select class='filter' id="user-filter"></select>
+            </div>
+            <button class='filter btn' onclick="prepareGraph()">search</button>
+        </section>
+        <section class="graph" id="sumAndAvgBarGraph"></section>
+        <section class="graph" id="userLineGraph">
+            <div id="userGraphs"></div>
+        </section>
+
+    </section>
+
+</div>
+
+</body>
+
+</html>
